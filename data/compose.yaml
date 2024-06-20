@@ -37,12 +37,14 @@ services:
   redis:
     image: redis:7-alpine
     restart: unless-stopped
+    container_name: redis
   postgres:
     image: pgautoupgrade/pgautoupgrade:latest
     env_file: /opt/redash/env
     volumes:
       - /opt/redash/postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
+    container_name: postgres
   nginx:
     image: redash/nginx:latest
     ports:
